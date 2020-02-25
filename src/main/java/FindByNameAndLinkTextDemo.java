@@ -4,7 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class Main {
+public class FindByNameAndLinkTextDemo {
     public static void main(String[] args) {
         String baseURL="https://learn.letskodeit.com";
         WebDriver driver;
@@ -13,5 +13,9 @@ public class Main {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(baseURL);
+
+//        driver.findElement(By.linkText("Login")).click();
+        driver.findElement(By.partialLinkText("Lo")).click();
+//        driver.findElement(By.name("enter-name")).sendKeys("Automation");
     }
 }
