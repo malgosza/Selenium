@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class GetAttributeDemo {
@@ -39,6 +40,10 @@ public class GetAttributeDemo {
 //        System.out.println("Value of attribute is: "+attributeValue);
         WebElement element = gm.getElement("name", "id");
         element.sendKeys("test");
+
+        List<WebElement> elementList = gm.getElementList("//input[@type='text']", "xpath");
+        int size = elementList.size();
+        System.out.println("Size of element list is: " + size);
     }
 
     @After
