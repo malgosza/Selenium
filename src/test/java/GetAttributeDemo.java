@@ -12,8 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class GetAttributeDemo {
 
-    WebDriver driver;
-    String baseURL;
+    private WebDriver driver;
+    private String baseURL;
+    private GenericMethods gm;
 
     @Before
     public void setUp() throws Exception {
@@ -22,19 +23,22 @@ public class GetAttributeDemo {
 
         driver = new ChromeDriver();
         baseURL = "https://letskodeit.teachable.com/pages/practice";
+        gm = new GenericMethods(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testGetText() throws Exception{
+    public void testGetText() throws Exception {
         driver.get(baseURL);
 
-        WebElement element=driver.findElement(By.id("name"));
-        String attributeValue=element.getAttribute("type");
-
-        System.out.println("Value of attribute is: "+attributeValue);
+//        WebElement element=driver.findElement(By.id("name"));
+//        String attributeValue=element.getAttribute("type");
+//
+//        System.out.println("Value of attribute is: "+attributeValue);
+        WebElement element = gm.getElement("name", "id");
+        element.sendKeys("test");
     }
 
     @After
