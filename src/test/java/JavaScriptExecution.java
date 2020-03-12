@@ -39,12 +39,24 @@ public class JavaScriptExecution {
         Thread.sleep(3000);
         // Finding element
         // WebElement textBox = driver.findElement(By.id("name"));
-        WebElement textBox=(WebElement) javascriptExecutor.executeScript("return document.getElementById('name');");
+        WebElement textBox = (WebElement) javascriptExecutor.executeScript("return document.getElementById('name');");
         textBox.sendKeys("test");
+
+        SizeOfWindow();
     }
 
     @After
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
+        Thread.sleep(2000);
+        driver.quit();
+    }
 
+    private void SizeOfWindow() {
+        // Size of window
+        long height = (Long) javascriptExecutor.executeScript("return window.innerHeight;");
+        long width = (Long) javascriptExecutor.executeScript("return window.innerWidth;");
+
+        System.out.println("Height is: " + height);
+        System.out.println("Width is: " + width);
     }
 }
