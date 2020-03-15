@@ -44,6 +44,9 @@ public class KeyPressDemo1 {
         Thread.sleep(2000);
 //        driver.findElement(By.id("openwindow")).sendKeys(Keys.chord(Keys.COMMAND, "a"));
 //        Thread.sleep(2000);
+        String selectAll = Keys.chord(Keys.COMMAND, "a");
+        driver.findElement(By.id("openwindow")).sendKeys(selectAll);
+        Thread.sleep(4000);
     }
 
     @After
