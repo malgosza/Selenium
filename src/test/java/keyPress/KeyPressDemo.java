@@ -3,15 +3,14 @@ package keyPress;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class KeyPressDemo1 {
+public class KeyPressDemo {
     private WebDriver driver;
     private String baseUrl;
 
@@ -31,6 +30,7 @@ public class KeyPressDemo1 {
         driver.get(baseUrl);
         Thread.sleep(2000);
 
+        // Part I
 //        driver.findElement(By.xpath("//a[contains(@href,'sign_in')]")).click();
 //        driver.findElement(By.id("user_email")).sendKeys("test@gmail.com");
 //        Thread.sleep(2000);
@@ -40,13 +40,17 @@ public class KeyPressDemo1 {
 //        driver.findElement(By.name("commit")).sendKeys(Keys.ENTER);
 
         // Part II
-        driver.findElement(By.id("openwindow")).sendKeys(Keys.COMMAND + "a");
-        Thread.sleep(2000);
+//        driver.findElement(By.id("openwindow")).sendKeys(Keys.COMMAND + "a");
+//        Thread.sleep(2000);
 //        driver.findElement(By.id("openwindow")).sendKeys(Keys.chord(Keys.COMMAND, "a"));
 //        Thread.sleep(2000);
-        String selectAll = Keys.chord(Keys.COMMAND, "a");
-        driver.findElement(By.id("openwindow")).sendKeys(selectAll);
-        Thread.sleep(4000);
+//        String selectAll = Keys.chord(Keys.COMMAND, "a");
+//        driver.findElement(By.id("openwindow")).sendKeys(selectAll);
+//        Thread.sleep(4000);
+
+        // Part III
+        Actions action = new Actions(driver);
+        action.keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND).perform();
     }
 
     @After
