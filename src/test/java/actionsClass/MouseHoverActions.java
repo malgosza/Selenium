@@ -1,16 +1,21 @@
+package actionsClass;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class SwitchFrame {
+public class MouseHoverActions {
     private WebDriver driver;
     private String baseURL;
+    private JavascriptExecutor jse;
 
     @Before
     public void setUp() throws Exception {
@@ -18,6 +23,7 @@ public class SwitchFrame {
 
         driver = new ChromeDriver();
         baseURL = "https://learn.letskodeit.com/p/practice";
+        jse = (JavascriptExecutor) driver;
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -25,29 +31,22 @@ public class SwitchFrame {
     }
 
     @Test
-    public void test() throws InterruptedException {
-        Thread.sleep(2000);
-        // Switch to frame by ID
-        driver.switchTo().frame("courses-iframe");
-        // Switch to frame by name
-//        driver.switchTo().frame("iframe-name");
-        // Switch to frame by numbers
-//        driver.switchTo().frame(0);
+    public void testMouseHoverActions() throws Exception {
+        jse.executeScript("window.scrollBy(0,600)");
+        Thread.sleep(200);
 
-        WebElement searchBox = driver.findElement(By.id("search-courses"));
-        searchBox.sendKeys("python");
+        WebElement mainElement=driver.findElement(By.id("mousehover"));
 
-        driver.switchTo().defaultContent();
+        Actions action=new Actions(driver);
+        action.moveToElement(mainElement).perform();
         Thread.sleep(2000);
-        ;
-        driver.findElement(By.id("name")).sendKeys("Test successful");
+
+        WebElement subElement=driver.findElement(By.xpath("//div[@class='mouse-hover-content']//a[text()='Top']"));
+        action.moveToElement(subElement).click().perform();
     }
 
-    @Test
-
-
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws Exception{
         Thread.sleep(2000);
         driver.quit();
     }

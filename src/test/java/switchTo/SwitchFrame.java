@@ -1,14 +1,16 @@
+package switchTo;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class SwitchAlert {
+public class SwitchFrame {
     private WebDriver driver;
     private String baseURL;
 
@@ -25,24 +27,26 @@ public class SwitchAlert {
     }
 
     @Test
-    public void test1() throws InterruptedException {
+    public void test() throws InterruptedException {
         Thread.sleep(2000);
-        driver.findElement(By.id("name")).sendKeys("Alicja");
-        driver.findElement(By.id("alertbtn")).click();
+        // Switch to frame by ID
+        driver.switchTo().frame("courses-iframe");
+        // Switch to frame by name
+//        driver.switchTo().frame("iframe-name");
+        // Switch to frame by numbers
+//        driver.switchTo().frame(0);
+
+        WebElement searchBox = driver.findElement(By.id("search-courses"));
+        searchBox.sendKeys("python");
+
+        driver.switchTo().defaultContent();
         Thread.sleep(2000);
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
+        ;
+        driver.findElement(By.id("name")).sendKeys("Test successful");
     }
 
     @Test
-    public void test2() throws Exception {
-        Thread.sleep(1000);
-        driver.findElement(By.id("name")).sendKeys("John");
-        driver.findElement(By.id("confirmbtn")).click();
-        Thread.sleep(1000);
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
-    }
+
 
     @After
     public void tearDown() throws Exception {
