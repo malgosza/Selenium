@@ -16,9 +16,9 @@ public class TestNG_SoftAsserts {
         SomeClassToTest obj = new SomeClassToTest();
         int result = obj.sumNumebrs(1, 2);
         sa.assertEquals(result, 2);
-        logger.info("Line after assert 1");
+        logger.info("Result: {}, Line after assert 1", result);
         sa.assertEquals(result, 3);
-        logger.info("Line after assert 2");
+        logger.info("Line after assert 2, result: {}", result);
         sa.assertAll();
     }
 }
