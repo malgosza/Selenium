@@ -1,7 +1,7 @@
 package testNG;
 
 public class SomeClassToTest {
-    public int sumNumebrs(int a, int b) {
+    public int sumNumbers(int a, int b) {
         return a + b;
     }
 

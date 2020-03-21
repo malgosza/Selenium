@@ -8,7 +8,7 @@ public class TestNG_Asserts {
     public void testSum() {
         System.out.println("\nRunning Test -> testSum");
         SomeClassToTest someClassToTest = new SomeClassToTest();
-        int result = someClassToTest.sumNumebrs(1, 2);
+        int result = someClassToTest.sumNumbers(1, 2);
         Assert.assertEquals(result, 3);
     }
 

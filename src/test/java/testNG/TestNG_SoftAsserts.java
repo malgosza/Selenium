@@ -14,7 +14,7 @@ public class TestNG_SoftAsserts {
         SoftAssert sa = new SoftAssert();
         logger.info("Running Test -> testSum");
         SomeClassToTest obj = new SomeClassToTest();
-        int result = obj.sumNumebrs(1, 2);
+        int result = obj.sumNumbers(1, 2);
         sa.assertEquals(result, 2);
         logger.info("Result: {}, Line after assert 1", result);
         sa.assertEquals(result, 3);
