@@ -1,0 +1,12 @@
+<suite name="Parallel TestSuite" parallel="methods" thread-count="3">
+    <test name="Test 1">
+        <classes>
+            <class name="testNG.TestNG_Preserve1"/>
+        </classes>
+    </test>
+    <test name="Test 2">
+        <classes>
+            <class name="testNG.TestNG_Preserve2"/>
+        </classes>
+    </test>
+</suite>
