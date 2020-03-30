@@ -2,3 +2,6 @@
 /target
 /.idea
 /chromedriver_win32
+/test-output
+/logs
+/screenshots
